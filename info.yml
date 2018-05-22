@@ -30,6 +30,15 @@ configuration:
             output files.
         fields: context, version, [name]
 
+    render_file_template:
+        type: template
+        description: >
+            A reference to a template which locates a Houdini work file on
+            disk.  This is used to drive the version and optionally the name of
+            output files.
+        fields: context, version, [name]
+        default_value: houdini_shot_workrender
+
     output_profiles:
         type: list
         description: >

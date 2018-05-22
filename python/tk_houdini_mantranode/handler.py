@@ -686,6 +686,12 @@ class TkMantraNodeHandler(object):
             work_file_template.validate(current_file_path)):
             work_fields = work_file_template.get_fields(current_file_path)
 
+        if not work_fields:
+            render_file_template = self._app.get_template("render_file_template")
+            if (render_file_template and 
+                render_file_template.validate(current_file_path)):
+                work_fields = render_file_template.get_fields(current_file_path)           
+
         return work_fields
 
 

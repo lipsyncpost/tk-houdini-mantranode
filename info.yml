@@ -102,6 +102,17 @@ configuration:
                         name.
                     fields: context, version, SEQ, [aov_name], [name], [width], [height], [eye], *
 
+                output_cryptomatte_template:
+                    type: template
+                    description: Extra image plane (deep rasters) output path template name.
+                    fields: context, version, SEQ, [node], [name], [width], [height], [eye], *
+                    default_value: houdini_shot_cryptomatte
+
+                output_cryptoobject_template:
+                    type: template
+                    description: Extra image plane (deep rasters) output path template name.
+                    fields: context, version, SEQ, [node], [name], [width], [height], [eye], *
+                    default_value: houdini_shot_cryptoobject
 
 # the Shotgun fields that this app needs in order to operate correctly
 requires_shotgun_fields:

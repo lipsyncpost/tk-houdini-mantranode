@@ -62,6 +62,8 @@ class TkMantraNodeHandler(object):
         "sgtk_soho_diskfile": "output_ifd_template",
         "sgtk_vm_dcmfilename": "output_dcm_template",
         "sgtk_vm_filename": "output_render_template",
+        "vm_cryptolayeroutput1": "output_cryptomatte_template",
+        "vm_cryptolayeroutput2": "output_cryptoobject_template"
     }
     """Mapping between tk mantra parms and corresponding render templates."""
 
@@ -603,9 +605,12 @@ class TkMantraNodeHandler(object):
             path = "ERROR: %s" % (err,)
 
         # Unlock, set, lock
-        node.parm(parm_name).lock(False)
-        node.parm(parm_name).set(path)
-        node.parm(parm_name).lock(True)
+        try:
+            node.parm(parm_name).lock(False)
+            node.parm(parm_name).set(path)
+            node.parm(parm_name).lock(True)
+        except AttributeError:
+            pass
 
 
     def _compute_output_path(self, node, template_name, aov_name=None):
